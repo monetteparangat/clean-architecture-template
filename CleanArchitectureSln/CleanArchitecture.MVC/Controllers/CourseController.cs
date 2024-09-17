@@ -1,9 +1,11 @@
 ﻿using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.MVC.Controllers
 {
+    [Authorize]
     public class CourseController : Controller
     {
         private ICourseService _courseService;
