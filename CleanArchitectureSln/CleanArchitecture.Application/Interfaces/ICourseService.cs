@@ -5,6 +5,6 @@ namespace CleanArchitecture.Application.Interfaces
 {
     public interface ICourseService
     {
-        IEnumerable<CourseVM> GetCourses();
+        CourseVM GetCourses();
     }
 }
