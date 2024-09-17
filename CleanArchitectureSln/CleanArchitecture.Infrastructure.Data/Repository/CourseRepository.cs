@@ -12,11 +12,17 @@ namespace CleanArchitecture.Infrastructure.Data.Repository
         {
             _dbContext = dbContext;
         }
-        public IEnumerable<Course> GetCourses() 
+        public IEnumerable<Course> GetCourses()
         {
             return _dbContext.Courses;
         }
-         
-        
+
+        public void Add(Course course)
+        {
+            _dbContext.Courses.Add(course);
+            _dbContext.SaveChanges();
+        }
+
+
     }
 }
