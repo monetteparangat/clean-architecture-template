@@ -1,4 +1,5 @@
 using CleanArchitecture.Infrastructure.Data.Context;
+using CleanArchitecture.Infrastructure.IoC;
 using CleanArchitecture.MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 
 builder.Services.AddControllersWithViews();
+
+// Register services
+DependencyContainer.RegisterServices(builder.Services);
 
 var app = builder.Build();
 
