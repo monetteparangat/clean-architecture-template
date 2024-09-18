@@ -1,9 +1,23 @@
+using CleanArchitecture.Infrastructure.Data.Context;
+using CleanArchitecture.Infrastructure.IoC;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+var universityDbConnectionString = builder.Configuration.GetConnectionString("UniversityDbConnection") ?? throw new InvalidOperationException("Connection string 'UniversityDBConnection' not found."); ;
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<UniversityDBContext>(options =>
+{
+    options.UseMySql(universityDbConnectionString, ServerVersion.AutoDetect(universityDbConnectionString));
+});
+
+// Register services
+DependencyContainer.RegisterServices(builder.Services);
 
 var app = builder.Build();
 

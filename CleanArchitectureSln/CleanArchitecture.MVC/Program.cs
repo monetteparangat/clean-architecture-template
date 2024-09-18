@@ -13,12 +13,14 @@ var universityDbConnectionString = builder.Configuration.GetConnectionString("Un
 // AddDbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDbContext<UniversityDBContext>(options =>
 {
-    options.UseMySql(universityDbConnectionString, ServerVersion.AutoDetect(connectionString));
+    options.UseMySql(universityDbConnectionString, ServerVersion.AutoDetect(universityDbConnectionString));
 });
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
