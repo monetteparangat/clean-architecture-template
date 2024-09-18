@@ -17,7 +17,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDbContext<UniversityDBContext>(options =>
 {
-    options.UseMySql(universityDbConnectionString, ServerVersion.AutoDetect(connectionString));
+    options.UseMySql(universityDbConnectionString, ServerVersion.AutoDetect(universityDbConnectionString));
 });
 
 
